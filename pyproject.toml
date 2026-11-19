@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lab-instrument-testbench"
+version = "0.1.0"
+description = "Software-only instrument controller and traceable verification suite"
+requires-python = ">=3.11"
+
+[project.optional-dependencies]
+test = ["pytest>=8,<10", "pytest-cov>=7,<8"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra --strict-markers"
+markers = ["requirement(id): verification requirement identifier", "integration: real TCP process integration"]
+junit_family = "xunit2"
+
+[tool.coverage.run]
+branch = true
+source = ["testbench"]
+patch = ["subprocess"]
+
+[tool.setuptools.packages.find]
+include = ["testbench*"]

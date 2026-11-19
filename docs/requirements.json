@@ -1,0 +1,14 @@
+{
+  "REQ-01": "Validate illustrative flow/stretch setpoints, including boundaries, types and non-finite values; reject configuration while running.",
+  "REQ-02": "Start only after configuration and fresh safe telemetry; stop disables outputs.",
+  "REQ-03": "Reject stale, future, duplicate or reordered sensor packets; accepted sequence and timestamp must increase monotonically.",
+  "REQ-04": "Missing telemetry beyond two seconds latches a fault and disables simulated outputs.",
+  "REQ-05": "Pressure above 120 illustrative kPa latches a fault; unsafe pressure prevents start/reset.",
+  "REQ-06": "Three consecutive flow deviations beyond max(1,10% of setpoint) latch a fault; an in-tolerance sample resets the streak.",
+  "REQ-07": "Faults remain latched after stop or healthy telemetry; explicit reset requires fresh safe telemetry and discards old configuration.",
+  "REQ-08": "Persist successful commands and audit records transactionally; identical command IDs replay without side effects and conflicting reuse is rejected.",
+  "REQ-09": "Restart never resumes running outputs; prior RUNNING or FAULT state becomes a review-required fault.",
+  "REQ-10": "Local TCP transport handles fragmented frames, malformed JSON, oversize frames, timeouts and reconnects without changing controller state on invalid messages.",
+  "REQ-11": "Concurrent command retries yield one applied command and one durable audit entry.",
+  "REQ-12": "The stale-start regression test must fail when freshness validation is deliberately replaced with a defective test double."
+}
